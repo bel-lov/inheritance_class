@@ -16,7 +16,7 @@ test('instance of the class Character', () => {
 test('instance of the class Bowerman', () => {
   const person = new Bowerman();
   expect(person).toEqual({
-    health: 100, level: 1, attack: 25, defence: 25, type: 'Bowerman',
+    health: 100, level: 1, attack: 25, defence: 25, type: 'Bowman',
   });
 });
 
