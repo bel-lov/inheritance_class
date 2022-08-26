@@ -9,32 +9,26 @@ export default class Character {
     this.defence = undefined;
     if (!types.includes(type)) {
       throw new Error('Тип указан некорректно!');
-    } else {
-      this.type = type;
     }
-    if (this.name.length < 2 && this.name.length > 10) {
-      throw new Error('Недопустимая длина имя игрока');
-    } else {
-      this.name = name;
+    if (name.length < 2 || name.length > 10) {
+      throw new Error('Имя должно быть строкой от 2 до 10 символов');
     }
   }
 
   levelUp() {
     if (this.health === 0) {
-      throw new Error('нельзя повысить левел умершего');
+      throw new Error('Нельзя повысить level умершего!');
     } else {
       this.level += 1;
-      // this.attack /= (100 * 20);
-      // this.defence /= (100 * 20);
-      this.attack = this.attack + (this.attack / 100 * 20);
-      this.defence = this.defence + (this.defence / 100 * 20);
+      this.attack += ((this.attack / 100) * 20);
+      this.defence += ((this.defence / 100) * 20);
       this.health = 100;
     }
   }
 
   damage(points) {
     if (this.health >= 0) {
-      this.health -= points * (1 - this.defence / 100);
+      this.health -= points * (1 - (this.defence / 100));
     }
   }
 }
